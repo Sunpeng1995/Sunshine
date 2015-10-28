@@ -35,6 +35,6 @@ void GameScene::initManager() {
 	c_manager = CreatureManager::create();
 	c_manager->createMyCreature();
 	c_manager->getMyCreature()->scheduleUpdate();
+	c_manager->addStage(stage);
 	this->addChild(c_manager, 1);
-
 }

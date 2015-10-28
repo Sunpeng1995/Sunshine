@@ -6,7 +6,7 @@
 #include "CreatureManager.h"
 USING_NS_CC;
 
-class GameScene :public Node {
+class GameScene :public Layer {
 public:
 	~GameScene();
 	static Scene* createScene();

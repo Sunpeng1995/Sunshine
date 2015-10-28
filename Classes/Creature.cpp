@@ -18,10 +18,8 @@ bool Creature::init(std::string filename)
 {
 	bindSpirte(filename);
 	addEye();
-	addUpdateCallBackFunc([=](){
-		setAngle(getAngle() > 360.0 ? 0.0 : getAngle() + 1.0);
-		setRotation(getAngle());
-	});
+
+	this->scheduleUpdate();
 	return true;
 }
 
@@ -41,3 +39,30 @@ float Creature::getAngle() {
 	return angle;
 }
 
+void Creature::move() {
+	float factor = Director::getInstance()->getVisibleSize().height / 500.0 * 5;
+	auto point = getPosition();
+	float dx = cos(angle / 180 * 3.1415926);
+	float dy = sin(angle / 180 * 3.1415926);
+	this->setPosition(point.x + dx * factor, point.y + dy * factor);
+}
+
+void Creature::update(float delta) {
+	if (state == STOP) {
+		setAngle(getAngle() >= 357.0 ? 0.0 : getAngle() + 3.0);
+		setRotation(0 - getAngle());
+	}
+	else if (state == MOVE) {
+		move();
+	}
+	else if (state = STATIC){
+	}
+}
+
+void Creature::setState(CreatureState st) {
+	state = st;
+}
+
+CreatureState Creature::getState() {
+	return state;
+}
