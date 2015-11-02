@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "GlobalArgs.h"
 USING_NS_CC;
 
 class StartScene :public Layer {
@@ -14,6 +15,8 @@ private:
 	void initMenu();
 	void exitCallBack(Ref* pSender);
 	void startCallBack(Ref* pSender);
+	void createCallBack(Ref* pSender);
+	void joinCallBack(Ref* pSender);
 };
 
 #endif
